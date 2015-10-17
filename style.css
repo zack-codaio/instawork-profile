@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  padding: 0;
+  margin: 0; }
+
+#navbar {
+  height: 60px;
+  z-index: 99;
+  position: relative;
+  border-bottom: 1px solid #166373;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  width: 100%; }
+  #navbar div {
+    display: inline-block;
+    line-height: 60px; }
+  #navbar .logo {
+    float: left;
+    padding: 0 30px;
+    border-right: 1px solid #eee; }
+  #navbar .searchbar {
+    padding: 0 30px; }
+  #navbar .navbutton {
+    float: right;
+    padding: 0 30px;
+    border-left: 1px solid #eee; }
+
+.maincontain {
+  z-index: 1;
+  padding: 15px;
+  background: #eee; }
+  .maincontain .card {
+    padding: 30px;
+    margin: 15px;
+    background: white;
+    display: inline-block;
+    border-radius: 3px; }
+
+/*# sourceMappingURL=style.css.map */

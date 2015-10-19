@@ -71,7 +71,41 @@ var NavButton = React.createClass({
     }
 });
 
-ReactDOM.render(React.createElement(Navbar, null), document.getElementById('example'));
+var ProfileCard = React.createClass({
+    displayName: 'ProfileCard',
+
+    render: function render() {
+        return React.createElement('div', null);
+    }
+});
+
+var MainContain = React.createClass({
+    displayName: 'MainContain',
+
+    render: function render() {
+        var myClass = "maincontain";
+        return React.createElement(
+            'div',
+            { className: myClass },
+            this.props.children
+        );
+    }
+});
+
+var ProfilePage = React.createClass({
+    displayName: 'ProfilePage',
+
+    render: function render() {
+        return React.createElement(
+            'div',
+            null,
+            React.createElement(Navbar, null),
+            React.createElement(MainContain, null)
+        );
+    }
+});
+
+ReactDOM.render(React.createElement(ProfilePage, null), document.getElementById('example'));
 
 },{"classnames":2,"react":158,"react-dom":3}],2:[function(require,module,exports){
 /*!

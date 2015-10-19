@@ -51,10 +51,29 @@ var NavButton = React.createClass({
    }
 });
 
+var ProfileCard = React.createClass({
+    render:function(){
+        return <div></div>;
+    }
+});
 
+var MainContain = React.createClass({
+    render:function(){
+        var myClass = "maincontain";
+        return <div className={myClass}>{this.props.children}</div>
+    }
+});
+
+var ProfilePage = React.createClass({
+   render:function(){
+       return <div>
+       <Navbar/><MainContain></MainContain>
+           </div>
+   }
+});
 
 ReactDOM.render(
-  <Navbar />,
+  <ProfilePage/>,
     document.getElementById('example')
 );
 

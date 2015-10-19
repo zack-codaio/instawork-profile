@@ -48,11 +48,26 @@ padding:0;
   padding:15px;
   background:$lightgray;
 
-  .card{
+  //contactInfo is a special card because it doesn't have that same title / body structure, there's just one card
+  #contactInfo{
     padding:30px;
+  }
+
+  .card{
+    vertical-align: top;
     margin:15px;
     background:white;
     display:inline-block;
     border-radius:3px;
+    box-shadow: 0 3px 7px rgba(0,0,0,.3);
+
+    .cardTitle{
+      border-bottom:1px solid $dgreen;
+      line-height:60px;
+      padding:0 30px;
+    }
+    .cardBody{
+      padding:30px;
+    }
   }
 }

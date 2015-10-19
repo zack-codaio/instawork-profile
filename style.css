@@ -30,11 +30,20 @@ body {
   z-index: 1;
   padding: 15px;
   background: #eee; }
+  .maincontain #contactInfo {
+    padding: 30px; }
   .maincontain .card {
-    padding: 30px;
+    vertical-align: top;
     margin: 15px;
     background: white;
     display: inline-block;
-    border-radius: 3px; }
+    border-radius: 3px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3); }
+    .maincontain .card .cardTitle {
+      border-bottom: 1px solid #166373;
+      line-height: 60px;
+      padding: 0 30px; }
+    .maincontain .card .cardBody {
+      padding: 30px; }
 
 /*# sourceMappingURL=style.css.map */

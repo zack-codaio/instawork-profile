@@ -1,6 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
  * Created by zackaman on 10/19/15.
+ *
+ * browserify -t babelify main.js -o bundle.js
  */
 
 // main.js
@@ -92,7 +94,42 @@ var ProfileCard = React.createClass({
         return React.createElement(
             'div',
             { className: myClass, id: 'contactInfo' },
-            'asdf'
+            React.createElement(
+                'div',
+                { className: 'profilePicture' },
+                React.createElement('img', { src: 'img/zackhead2.jpg' })
+            ),
+            React.createElement(
+                'div',
+                { className: 'profileInformation' },
+                React.createElement(
+                    'h1',
+                    null,
+                    'Zachary Aman'
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'label' },
+                    'Commuting from:'
+                ),
+                '955 Pine Street, San Francisco, 94108',
+                React.createElement(
+                    'div',
+                    { className: 'label' },
+                    'Email Address:'
+                ),
+                'zackyuaman@gmail.com',
+                React.createElement(
+                    'div',
+                    { className: 'label' },
+                    'Phone Number:'
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'dg_button' },
+                    'Add Mobile Phone'
+                )
+            )
         );
     }
 });
@@ -108,13 +145,61 @@ var TitleCard = React.createClass({
             React.createElement(
                 'div',
                 { className: 'cardTitle' },
-                this.props.name
+                React.createElement(
+                    'h2',
+                    null,
+                    this.props.name
+                )
             ),
             React.createElement(
                 'div',
                 { className: 'cardBody' },
-                'card body'
+                this.props.children
             )
+        );
+    }
+});
+
+var ApplicationRow = React.createClass({
+    displayName: 'ApplicationRow',
+
+    render: function render() {
+        return React.createElement(
+            'div',
+            { className: 'appRow' },
+            React.createElement(
+                'div',
+                { className: 'jobtitle' },
+                this.props.jobtitle
+            ),
+            React.createElement(
+                'div',
+                { className: 'company' },
+                this.props.company
+            ),
+            React.createElement(
+                'div',
+                { className: 'distance' },
+                this.props.distance
+            ),
+            React.createElement(
+                'div',
+                { className: 'status' },
+                this.props.status
+            )
+        );
+    }
+});
+
+var ActionRequired = React.createClass({
+    displayName: 'ActionRequired',
+
+    render: function render() {
+        return React.createElement(
+            'div',
+            { className: 'actionRequired' },
+            React.createElement('img', { src: 'img/alert2.svg' }),
+            'ACTION REQUIRED'
         );
     }
 });
@@ -131,9 +216,39 @@ var ProfilePage = React.createClass({
                 MainContain,
                 null,
                 React.createElement(ProfileCard, null),
-                React.createElement(TitleCard, { name: 'Submitted Applications' }),
-                React.createElement(TitleCard, { name: 'Work Experience' }),
-                React.createElement(TitleCard, { name: 'References' }),
+                React.createElement(
+                    TitleCard,
+                    { name: 'Submitted Applications' },
+                    React.createElement(ApplicationRow, { jobtitle: 'Part-Time Host', company: 'The Battery', distance: '0.3 Miles', status: 'Pending' }),
+                    React.createElement(ApplicationRow, { jobtitle: 'Waiter', company: 'Mousad', distance: '1.6 Miles', status: 'Pending' }),
+                    React.createElement(ApplicationRow, { jobtitle: 'Host', company: '5A5', distance: '1.7 Miles', status: 'Declined' }),
+                    React.createElement(ApplicationRow, { jobtitle: 'Host', company: 'Chiaroscuro', distance: '2.4 Miles', status: 'Scheduled' })
+                ),
+                React.createElement(
+                    TitleCard,
+                    { name: 'Work Experience' },
+                    React.createElement(ActionRequired, null),
+                    React.createElement(
+                        'div',
+                        { className: 'italText' },
+                        'You still need to add your work experience.'
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'dg_button' },
+                        'Upload Resume'
+                    )
+                ),
+                React.createElement(
+                    TitleCard,
+                    { name: 'References' },
+                    React.createElement(ActionRequired, null),
+                    React.createElement(
+                        'div',
+                        { className: 'italText' },
+                        'You still need to add at least one reference.'
+                    )
+                ),
                 React.createElement(TitleCard, { name: 'Availability' })
             )
         );

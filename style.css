@@ -172,6 +172,37 @@ input, option, select {
   .or div:last-of-type {
     margin-left: 5px; }
 
+.refRelation {
+  text-align: center;
+  margin: 15px 0;
+  margin-left: 0 !important; }
+  .refRelation img {
+    max-width: 70px;
+    margin: auto; }
+
+.subhead {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 10px; }
+
+.availabilityWrapper {
+  margin-bottom: 30px; }
+  .availabilityWrapper img {
+    width: 30%;
+    vertical-align: middle; }
+  .availabilityWrapper div {
+    display: inline-block;
+    margin-left: 5%;
+    width: 65%;
+    vertical-align: middle;
+    font-weight: 700;
+    color: #166373; }
+  .availabilityWrapper .off {
+    color: #8B0202; }
+
+.availabilityWrapper:last-of-type {
+  margin-bottom: 0; }
+
 @media (min-width: 550px) {
   .margin-override {
     margin: 15px; } }

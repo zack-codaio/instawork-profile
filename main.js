@@ -123,8 +123,6 @@ var ApplicationRow = React.createClass({
             <div className="status">
                 {this.props.status}
             </div>
-
-
         </div>
     }
 });
@@ -192,7 +190,25 @@ var ResumeForm = React.createClass({
 });
 
 var ReferencesForm = React.createClass({
+    getInitialState: function () {
+        return {
+            refType: 0
+        };
+    },
+    handleClick: function (refType) {
+        console.log("handling click " + refType);
+
+        this.setState({
+            refType: refType
+        })
+    },
     render: function () {
+        var refForm = this;
+        console.log("my ref form:");
+        console.log(refForm);
+
+        var refType = this.state.refType;
+
         return <div className="six columns">
             <label for="refName">What's your reference's name?</label>
             <input className="u-full-width" type="email" placeholder="Full Name" id="refName"/>
@@ -200,18 +216,88 @@ var ReferencesForm = React.createClass({
             <label for="refPhone">What's their mobile phone number?</label>
             <input className="u-full-width" type="email" placeholder="Mobile phone number" id="refPhone"/>
 
-            <label for="timespan">What's their relationship with you?</label>
-            <select className="u-full-width" id="timespan">
-                <option value="Option 1">Less than 1 Year</option>
-                <option value="Option 2">1 Year</option>
-                <option value="Option 3">2 Years</option>
-                <option value="Option 3">3 Years</option>
-                <option value="Option 3">4 Years</option>
-                <option value="Option 3">5 Years</option>
+            <label >What's their relationship with you?</label>
+            <div className="row">
+                <div className="six columns refRelation" >
+                    <img src={refType == 1 ? "img/manager-on.png" : "img/manager-off.png"} onClick={refForm.handleClick.bind(null, 1)}/>
+                    <div className="iconLabel">
+                        Manager
+                    </div>
+                </div>
+                <div className="six columns refRelation">
+                    <img src={refType == 2 ? "img/owner-on.png" : "img/owner-off.png"} onClick={refForm.handleClick.bind(null, 2)}/>
+                    <div className="iconLabel">
+                        Owner
+                    </div>
+                </div>
+                <div className="six columns refRelation">
+                    <img src={refType == 3 ? "img/coworker-on.png" : "img/coworker-off.png"} onClick={refForm.handleClick.bind(null, 3)}/>
+                    <div className="iconLabel">
+                        Co-worker
+                    </div>
+                </div>
+                <div className="six columns refRelation">
+                    <img src={refType == 4 ? "img/friend-on.png" : "img/friend-off.png"} onClick={refForm.handleClick.bind(null, 4)}/>
+                    <div className="iconLabel">
+                        Friend
+                    </div>
+                </div>
 
-            </select>
+            </div>
             <div className="dg_button">
                 Ask for Reference
+            </div>
+
+        </div>
+    }
+});
+
+var AvailabilityToggles = React.createClass({
+    render: function () {
+        return <div className="row">
+            <div className="six columns">
+                <h3 className="subhead">
+                    Weekdays
+                </h3>
+                <AvailabilityRow availableImg="img/morning-on.png" notAvailableImg="img/morning-off.png" availableText="weekday mornings."/>
+                <AvailabilityRow availableImg="img/afternoon-on.png" notAvailableImg="img/afternoon-off.png" availableText="weekday afternoons."/>
+                <AvailabilityRow availableImg="img/evening-on.png" notAvailableImg="img/evening-off.png" availableText="weekday evenings."/>
+            </div>
+
+            <div className="six columns">
+                <h3 className="subhead">
+                    Weekends
+                    </h3>
+                <AvailabilityRow availableImg="img/morning-on.png" notAvailableImg="img/morning-off.png" availableText="weekend mornings."/>
+                <AvailabilityRow availableImg="img/afternoon-on.png" notAvailableImg="img/afternoon-off.png" availableText="weekend afternoons."/>
+                <AvailabilityRow availableImg="img/evening-on.png" notAvailableImg="img/evening-off.png" availableText="weekend evenings."/>
+            </div>
+        </div>
+    }
+
+});
+
+var AvailabilityRow = React.createClass({
+    getInitialState: function () {
+        return {
+            available: true
+        }
+    },
+    handleClick: function () {
+        this.setState({
+            available: !this.state.available
+        })
+    },
+    render: function () {
+        var availabilityClass = "";
+        if(!this.state.available){
+            availabilityClass += "off";
+        }
+
+        return <div className="availabilityWrapper" onClick={this.handleClick}>
+        <img src={this.state.available ? this.props.availableImg : this.props.notAvailableImg}/>
+            <div className={availabilityClass}>
+                   {this.state.available ? "I am available on "+this.props.availableText : "I am not available on "+this.props.availableText}
             </div>
         </div>
     }
@@ -223,13 +309,13 @@ var ProfilePage = React.createClass({
             <Navbar/>
             <MainContain>
 
-                    <ProfileCard/>
-                    <TitleCard name="Submitted Applications">
-                        <ApplicationRow jobtitle="Part-Time Host" company="The Battery" distance="0.3 Miles" status="Pending"/>
-                        <ApplicationRow jobtitle="Waiter" company="Mousad" distance="1.6 Miles" status="Pending"/>
-                        <ApplicationRow jobtitle="Host" company="5A5" distance="1.7 Miles" status="Declined"/>
-                        <ApplicationRow jobtitle="Host" company="Chiaroscuro" distance="2.4 Miles" status="Scheduled"/>
-                    </TitleCard>
+                <ProfileCard/>
+                <TitleCard name="Submitted Applications">
+                    <ApplicationRow jobtitle="Part-Time Host" company="The Battery" distance="0.3 Miles" status="Pending"/>
+                    <ApplicationRow jobtitle="Waiter" company="Mousad" distance="1.6 Miles" status="Pending"/>
+                    <ApplicationRow jobtitle="Host" company="5A5" distance="1.7 Miles" status="Declined"/>
+                    <ApplicationRow jobtitle="Host" company="Chiaroscuro" distance="2.4 Miles" status="Scheduled"/>
+                </TitleCard>
 
                 <TitleCard name="Work Experience">
                     <div className="row">
@@ -254,7 +340,9 @@ var ProfilePage = React.createClass({
                     </div>
 
                 </TitleCard>
-                <TitleCard name="Availability"/>
+                <TitleCard name="Availability">
+                    <AvailabilityToggles/>
+                    </TitleCard>
             </MainContain>
         </div>
     }

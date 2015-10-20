@@ -93,7 +93,7 @@ var ProfileCard = React.createClass({
         var myClass = "card";
         return React.createElement(
             'div',
-            { className: 'twelve columns margin-override' },
+            { className: 'six columns margin-override' },
             React.createElement(
                 'div',
                 { className: myClass, id: 'contactInfo' },
@@ -145,7 +145,7 @@ var TitleCard = React.createClass({
         var myClass = "card";
         return React.createElement(
             'div',
-            { className: 'twelve columns margin-override' },
+            { className: 'six columns margin-override' },
             React.createElement(
                 'div',
                 { className: myClass },
@@ -312,7 +312,25 @@ var ResumeForm = React.createClass({
 var ReferencesForm = React.createClass({
     displayName: 'ReferencesForm',
 
+    getInitialState: function getInitialState() {
+        return {
+            refType: 0
+        };
+    },
+    handleClick: function handleClick(refType) {
+        console.log("handling click " + refType);
+
+        this.setState({
+            refType: refType
+        });
+    },
     render: function render() {
+        var refForm = this;
+        console.log("my ref form:");
+        console.log(refForm);
+
+        var refType = this.state.refType;
+
         return React.createElement(
             'div',
             { className: 'six columns' },
@@ -330,47 +348,125 @@ var ReferencesForm = React.createClass({
             React.createElement('input', { className: 'u-full-width', type: 'email', placeholder: 'Mobile phone number', id: 'refPhone' }),
             React.createElement(
                 'label',
-                { 'for': 'timespan' },
+                null,
                 'What\'s their relationship with you?'
             ),
             React.createElement(
-                'select',
-                { className: 'u-full-width', id: 'timespan' },
+                'div',
+                { className: 'row' },
                 React.createElement(
-                    'option',
-                    { value: 'Option 1' },
-                    'Less than 1 Year'
+                    'div',
+                    { className: 'six columns refRelation' },
+                    React.createElement('img', { src: refType == 1 ? "img/manager-on.png" : "img/manager-off.png", onClick: refForm.handleClick.bind(null, 1) }),
+                    React.createElement(
+                        'div',
+                        { className: 'iconLabel' },
+                        'Manager'
+                    )
                 ),
                 React.createElement(
-                    'option',
-                    { value: 'Option 2' },
-                    '1 Year'
+                    'div',
+                    { className: 'six columns refRelation' },
+                    React.createElement('img', { src: refType == 2 ? "img/owner-on.png" : "img/owner-off.png", onClick: refForm.handleClick.bind(null, 2) }),
+                    React.createElement(
+                        'div',
+                        { className: 'iconLabel' },
+                        'Owner'
+                    )
                 ),
                 React.createElement(
-                    'option',
-                    { value: 'Option 3' },
-                    '2 Years'
+                    'div',
+                    { className: 'six columns refRelation' },
+                    React.createElement('img', { src: refType == 3 ? "img/coworker-on.png" : "img/coworker-off.png", onClick: refForm.handleClick.bind(null, 3) }),
+                    React.createElement(
+                        'div',
+                        { className: 'iconLabel' },
+                        'Co-worker'
+                    )
                 ),
                 React.createElement(
-                    'option',
-                    { value: 'Option 3' },
-                    '3 Years'
-                ),
-                React.createElement(
-                    'option',
-                    { value: 'Option 3' },
-                    '4 Years'
-                ),
-                React.createElement(
-                    'option',
-                    { value: 'Option 3' },
-                    '5 Years'
+                    'div',
+                    { className: 'six columns refRelation' },
+                    React.createElement('img', { src: refType == 4 ? "img/friend-on.png" : "img/friend-off.png", onClick: refForm.handleClick.bind(null, 4) }),
+                    React.createElement(
+                        'div',
+                        { className: 'iconLabel' },
+                        'Friend'
+                    )
                 )
             ),
             React.createElement(
                 'div',
                 { className: 'dg_button' },
                 'Ask for Reference'
+            )
+        );
+    }
+});
+
+var AvailabilityToggles = React.createClass({
+    displayName: 'AvailabilityToggles',
+
+    render: function render() {
+        return React.createElement(
+            'div',
+            { className: 'row' },
+            React.createElement(
+                'div',
+                { className: 'six columns' },
+                React.createElement(
+                    'h3',
+                    { className: 'subhead' },
+                    'Weekdays'
+                ),
+                React.createElement(AvailabilityRow, { availableImg: 'img/morning-on.png', notAvailableImg: 'img/morning-off.png', availableText: 'weekday mornings.' }),
+                React.createElement(AvailabilityRow, { availableImg: 'img/afternoon-on.png', notAvailableImg: 'img/afternoon-off.png', availableText: 'weekday afternoons.' }),
+                React.createElement(AvailabilityRow, { availableImg: 'img/evening-on.png', notAvailableImg: 'img/evening-off.png', availableText: 'weekday evenings.' })
+            ),
+            React.createElement(
+                'div',
+                { className: 'six columns' },
+                React.createElement(
+                    'h3',
+                    { className: 'subhead' },
+                    'Weekends'
+                ),
+                React.createElement(AvailabilityRow, { availableImg: 'img/morning-on.png', notAvailableImg: 'img/morning-off.png', availableText: 'weekend mornings.' }),
+                React.createElement(AvailabilityRow, { availableImg: 'img/afternoon-on.png', notAvailableImg: 'img/afternoon-off.png', availableText: 'weekend afternoons.' }),
+                React.createElement(AvailabilityRow, { availableImg: 'img/evening-on.png', notAvailableImg: 'img/evening-off.png', availableText: 'weekend evenings.' })
+            )
+        );
+    }
+
+});
+
+var AvailabilityRow = React.createClass({
+    displayName: 'AvailabilityRow',
+
+    getInitialState: function getInitialState() {
+        return {
+            available: true
+        };
+    },
+    handleClick: function handleClick() {
+        this.setState({
+            available: !this.state.available
+        });
+    },
+    render: function render() {
+        var availabilityClass = "";
+        if (!this.state.available) {
+            availabilityClass += "off";
+        }
+
+        return React.createElement(
+            'div',
+            { className: 'availabilityWrapper', onClick: this.handleClick },
+            React.createElement('img', { src: this.state.available ? this.props.availableImg : this.props.notAvailableImg }),
+            React.createElement(
+                'div',
+                { className: availabilityClass },
+                this.state.available ? "I am available on " + this.props.availableText : "I am not available on " + this.props.availableText
             )
         );
     }
@@ -432,7 +528,11 @@ var ProfilePage = React.createClass({
                         React.createElement(ReferencesForm, null)
                     )
                 ),
-                React.createElement(TitleCard, { name: 'Availability' })
+                React.createElement(
+                    TitleCard,
+                    { name: 'Availability' },
+                    React.createElement(AvailabilityToggles, null)
+                )
             )
         );
     }

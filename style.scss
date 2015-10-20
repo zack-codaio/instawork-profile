@@ -68,10 +68,10 @@ img{
   padding:15px 30px 30px;
   background:$lightgray;
 
-  -moz-column-count: 2;
-  -moz-column-gap: 30px;
-  -webkit-column-count: 2;
-  -webkit-column-gap: 30px;
+//  -moz-column-count: 2;
+//  -moz-column-gap: 30px;
+//  -webkit-column-count: 2;
+//  -webkit-column-gap: 30px;
 
   //contactInfo is a special card because it doesn't have that same title / body structure, there's just one card
   #contactInfo{
@@ -109,7 +109,7 @@ img{
     background:white;
     display:inline-block;
     border-radius:3px;
-//    box-shadow: 0 3px 7px rgba(0,0,0,.3);
+    box-shadow: 0 3px 7px rgba(0,0,0,.3);
 //    min-width:520px;
     width: 100%;
     font-weight:100;

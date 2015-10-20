@@ -40,11 +40,7 @@ img {
 .maincontain {
   z-index: 1;
   padding: 15px 30px 30px;
-  background: #eee;
-  -moz-column-count: 2;
-  -moz-column-gap: 30px;
-  -webkit-column-count: 2;
-  -webkit-column-gap: 30px; }
+  background: #eee; }
   .maincontain #contactInfo {
     padding: 30px; }
     .maincontain #contactInfo .profilePicture {
@@ -70,6 +66,7 @@ img {
     background: white;
     display: inline-block;
     border-radius: 3px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
     width: 100%;
     font-weight: 100; }
     .maincontain .card .cardTitle {

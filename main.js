@@ -63,7 +63,7 @@ var MainContain = React.createClass({
 var ProfileCard = React.createClass({
     render: function () {
         var myClass = "card";
-        return <div className="twelve columns margin-override">
+        return <div className="six columns margin-override">
             <div className={myClass} id="contactInfo">
                 <div className="profilePicture">
                     <img src="img/zackhead2.jpg"/>
@@ -95,7 +95,7 @@ var ProfileCard = React.createClass({
 var TitleCard = React.createClass({
     render: function () {
         var myClass = "card";
-        return <div className="twelve columns margin-override">
+        return <div className="six columns margin-override">
             <div className={myClass}>
                 <div className="cardTitle">
                     <h2>{this.props.name}</h2>

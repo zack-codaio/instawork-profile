@@ -77,7 +77,7 @@ var MainContain = React.createClass({
     displayName: 'MainContain',
 
     render: function render() {
-        var myClass = "maincontain";
+        var myClass = "maincontain container";
         return React.createElement(
             'div',
             { className: myClass },
@@ -93,41 +93,45 @@ var ProfileCard = React.createClass({
         var myClass = "card";
         return React.createElement(
             'div',
-            { className: myClass, id: 'contactInfo' },
+            { className: 'twelve columns margin-override' },
             React.createElement(
                 'div',
-                { className: 'profilePicture' },
-                React.createElement('img', { src: 'img/zackhead2.jpg' })
-            ),
-            React.createElement(
-                'div',
-                { className: 'profileInformation' },
+                { className: myClass, id: 'contactInfo' },
                 React.createElement(
-                    'h1',
-                    null,
-                    'Zachary Aman'
+                    'div',
+                    { className: 'profilePicture' },
+                    React.createElement('img', { src: 'img/zackhead2.jpg' })
                 ),
                 React.createElement(
                     'div',
-                    { className: 'label' },
-                    'Commuting from:'
-                ),
-                '955 Pine Street, San Francisco, 94108',
-                React.createElement(
-                    'div',
-                    { className: 'label' },
-                    'Email Address:'
-                ),
-                'zackyuaman@gmail.com',
-                React.createElement(
-                    'div',
-                    { className: 'label' },
-                    'Phone Number:'
-                ),
-                React.createElement(
-                    'div',
-                    { className: 'dg_button' },
-                    'Add Mobile Phone'
+                    { className: 'profileInformation' },
+                    React.createElement(
+                        'h1',
+                        null,
+                        'Zachary Aman'
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'label' },
+                        'Commuting from:'
+                    ),
+                    '955 Pine Street, San Francisco, 94108',
+                    React.createElement(
+                        'div',
+                        { className: 'label' },
+                        'Email Address:'
+                    ),
+                    'zackyuaman@gmail.com',
+                    React.createElement(
+                        'div',
+                        { className: 'label' },
+                        'Phone Number:'
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'dg_button' },
+                        'Add Mobile Phone'
+                    )
                 )
             )
         );
@@ -141,20 +145,24 @@ var TitleCard = React.createClass({
         var myClass = "card";
         return React.createElement(
             'div',
-            { className: myClass },
+            { className: 'twelve columns margin-override' },
             React.createElement(
                 'div',
-                { className: 'cardTitle' },
+                { className: myClass },
                 React.createElement(
-                    'h2',
-                    null,
-                    this.props.name
+                    'div',
+                    { className: 'cardTitle' },
+                    React.createElement(
+                        'h2',
+                        null,
+                        this.props.name
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'cardBody' },
+                    this.props.children
                 )
-            ),
-            React.createElement(
-                'div',
-                { className: 'cardBody' },
-                this.props.children
             )
         );
     }
@@ -197,9 +205,173 @@ var ActionRequired = React.createClass({
     render: function render() {
         return React.createElement(
             'div',
-            { className: 'actionRequired' },
-            React.createElement('img', { src: 'img/alert2.svg' }),
-            'ACTION REQUIRED'
+            { className: 'six columns' },
+            React.createElement(
+                'div',
+                { className: 'actionRequired' },
+                React.createElement('img', { src: 'img/alert2.svg' }),
+                'ACTION REQUIRED'
+            ),
+            this.props.children
+        );
+    }
+});
+
+//<div class="six columns">
+//    <label for="exampleEmailInput">Your email</label>
+//    <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+//    </div>
+//    <div class="six columns">
+//        <label for="exampleRecipientInput">Reason for contacting</label>
+//        <select class="u-full-width" id="exampleRecipientInput">
+//            <option value="Option 1">Questions</option>
+//            <option value="Option 2">Admiration</option>
+//            <option value="Option 3">Can I get your number?</option>
+//        </select>
+//    </div>
+
+var ResumeForm = React.createClass({
+    displayName: 'ResumeForm',
+
+    render: function render() {
+        return React.createElement(
+            'div',
+            { className: 'six columns' },
+            React.createElement(
+                'div',
+                { className: 'dg_button' },
+                'Upload Resume'
+            ),
+            React.createElement(
+                'div',
+                { className: 'or' },
+                React.createElement('div', null),
+                'OR',
+                React.createElement('div', null)
+            ),
+            React.createElement(
+                'label',
+                { 'for': 'workplace' },
+                'Where did you work?'
+            ),
+            React.createElement('input', { className: 'u-full-width', type: 'email', placeholder: 'test@mailbox.com', id: 'workplace' }),
+            React.createElement(
+                'label',
+                { 'for': 'jobname' },
+                'What was your job?'
+            ),
+            React.createElement('input', { className: 'u-full-width', type: 'email', placeholder: 'test@mailbox.com', id: 'jobname' }),
+            React.createElement(
+                'label',
+                { 'for': 'timespan' },
+                'How long did you work there?'
+            ),
+            React.createElement(
+                'select',
+                { className: 'u-full-width', id: 'timespan' },
+                React.createElement(
+                    'option',
+                    { value: 'Option 1' },
+                    'Less than 1 Year'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 2' },
+                    '1 Year'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 3' },
+                    '2 Years'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 3' },
+                    '3 Years'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 3' },
+                    '4 Years'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 3' },
+                    '5 Years'
+                )
+            ),
+            React.createElement(
+                'div',
+                { className: 'dg_button' },
+                'Add Experience'
+            )
+        );
+    }
+});
+
+var ReferencesForm = React.createClass({
+    displayName: 'ReferencesForm',
+
+    render: function render() {
+        return React.createElement(
+            'div',
+            { className: 'six columns' },
+            React.createElement(
+                'label',
+                { 'for': 'refName' },
+                'What\'s your reference\'s name?'
+            ),
+            React.createElement('input', { className: 'u-full-width', type: 'email', placeholder: 'Full Name', id: 'refName' }),
+            React.createElement(
+                'label',
+                { 'for': 'refPhone' },
+                'What\'s their mobile phone number?'
+            ),
+            React.createElement('input', { className: 'u-full-width', type: 'email', placeholder: 'Mobile phone number', id: 'refPhone' }),
+            React.createElement(
+                'label',
+                { 'for': 'timespan' },
+                'What\'s their relationship with you?'
+            ),
+            React.createElement(
+                'select',
+                { className: 'u-full-width', id: 'timespan' },
+                React.createElement(
+                    'option',
+                    { value: 'Option 1' },
+                    'Less than 1 Year'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 2' },
+                    '1 Year'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 3' },
+                    '2 Years'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 3' },
+                    '3 Years'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 3' },
+                    '4 Years'
+                ),
+                React.createElement(
+                    'option',
+                    { value: 'Option 3' },
+                    '5 Years'
+                )
+            ),
+            React.createElement(
+                'div',
+                { className: 'dg_button' },
+                'Ask for Reference'
+            )
         );
     }
 });
@@ -227,26 +399,37 @@ var ProfilePage = React.createClass({
                 React.createElement(
                     TitleCard,
                     { name: 'Work Experience' },
-                    React.createElement(ActionRequired, null),
                     React.createElement(
                         'div',
-                        { className: 'italText' },
-                        'You still need to add your work experience.'
-                    ),
-                    React.createElement(
-                        'div',
-                        { className: 'dg_button' },
-                        'Upload Resume'
+                        { className: 'row' },
+                        React.createElement(
+                            ActionRequired,
+                            null,
+                            React.createElement(
+                                'div',
+                                { className: 'italText' },
+                                'You still need to add your work experience.'
+                            )
+                        ),
+                        React.createElement(ResumeForm, null)
                     )
                 ),
                 React.createElement(
                     TitleCard,
                     { name: 'References' },
-                    React.createElement(ActionRequired, null),
                     React.createElement(
                         'div',
-                        { className: 'italText' },
-                        'You still need to add at least one reference.'
+                        { className: 'row' },
+                        React.createElement(
+                            ActionRequired,
+                            null,
+                            React.createElement(
+                                'div',
+                                { className: 'italText' },
+                                'You still need to add at least one reference.'
+                            )
+                        ),
+                        React.createElement(ReferencesForm, null)
                     )
                 ),
                 React.createElement(TitleCard, { name: 'Availability' })

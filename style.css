@@ -39,8 +39,12 @@ img {
 
 .maincontain {
   z-index: 1;
-  padding: 15px;
-  background: #eee; }
+  padding: 15px 30px 30px;
+  background: #eee;
+  -moz-column-count: 2;
+  -moz-column-gap: 30px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 30px; }
   .maincontain #contactInfo {
     padding: 30px; }
     .maincontain #contactInfo .profilePicture {
@@ -56,18 +60,17 @@ img {
       width: 270px;
       margin-left: 25px; }
       .maincontain #contactInfo .profileInformation h1 {
-        margin-top: 0; }
+        margin-top: 0;
+        font-size: 30px; }
       .maincontain #contactInfo .profileInformation .label {
         margin: 15px 0 5px;
         color: #9B9B9B; }
   .maincontain .card {
     vertical-align: top;
-    margin: 15px;
     background: white;
     display: inline-block;
     border-radius: 3px;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    min-width: 520px;
+    width: 100%;
     font-weight: 100; }
     .maincontain .card .cardTitle {
       border-bottom: 1px solid #166373;
@@ -76,9 +79,14 @@ img {
       .maincontain .card .cardTitle h2 {
         margin: 0;
         font-weight: 300;
-        font-size: 24px; }
+        font-size: 24px;
+        line-height: 60px; }
     .maincontain .card .cardBody {
       padding: 30px; }
+      .maincontain .card .cardBody .six.columns {
+        margin-left: 15px; }
+      .maincontain .card .cardBody .six.columns:first-of-type {
+        margin-left: 0; }
       .maincontain .card .cardBody .appRow {
         margin: 16px 0;
         border-bottom: 1px solid #eee;
@@ -118,7 +126,8 @@ img {
   font-size: 18px;
   padding: 8px 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  transition: background .3s; }
+  transition: background .3s;
+  max-width: 270px; }
 
 .dg_button:hover {
   background: #0BB78C; }
@@ -142,5 +151,32 @@ img {
   line-height: 18px;
   font-size: 14px;
   margin-bottom: 15px; }
+
+label {
+  font-size: 14px;
+  font-weight: 100; }
+
+input, option, select {
+  font-size: 16px;
+  line-height: 23px; }
+
+.or {
+  text-align: center;
+  color: #9B9B9B;
+  margin: 25px 0; }
+  .or div {
+    width: 40%;
+    height: 0;
+    border-bottom: 1px solid #9B9B9B;
+    display: inline-block;
+    vertical-align: middle; }
+  .or div:first-of-type {
+    margin-right: 5px; }
+  .or div:last-of-type {
+    margin-left: 5px; }
+
+@media (min-width: 550px) {
+  .margin-override {
+    margin: 15px; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -71,14 +71,6 @@ var NavButton = React.createClass({
     }
 });
 
-var ProfileCard = React.createClass({
-    displayName: 'ProfileCard',
-
-    render: function render() {
-        return React.createElement('div', null);
-    }
-});
-
 var MainContain = React.createClass({
     displayName: 'MainContain',
 
@@ -92,6 +84,41 @@ var MainContain = React.createClass({
     }
 });
 
+var ProfileCard = React.createClass({
+    displayName: 'ProfileCard',
+
+    render: function render() {
+        var myClass = "card";
+        return React.createElement(
+            'div',
+            { className: myClass, id: 'contactInfo' },
+            'asdf'
+        );
+    }
+});
+
+var TitleCard = React.createClass({
+    displayName: 'TitleCard',
+
+    render: function render() {
+        var myClass = "card";
+        return React.createElement(
+            'div',
+            { className: myClass },
+            React.createElement(
+                'div',
+                { className: 'cardTitle' },
+                this.props.name
+            ),
+            React.createElement(
+                'div',
+                { className: 'cardBody' },
+                'card body'
+            )
+        );
+    }
+});
+
 var ProfilePage = React.createClass({
     displayName: 'ProfilePage',
 
@@ -100,7 +127,15 @@ var ProfilePage = React.createClass({
             'div',
             null,
             React.createElement(Navbar, null),
-            React.createElement(MainContain, null)
+            React.createElement(
+                MainContain,
+                null,
+                React.createElement(ProfileCard, null),
+                React.createElement(TitleCard, { name: 'Submitted Applications' }),
+                React.createElement(TitleCard, { name: 'Work Experience' }),
+                React.createElement(TitleCard, { name: 'References' }),
+                React.createElement(TitleCard, { name: 'Availability' })
+            )
         );
     }
 });

@@ -51,12 +51,6 @@ var NavButton = React.createClass({
    }
 });
 
-var ProfileCard = React.createClass({
-    render:function(){
-        return <div></div>;
-    }
-});
-
 var MainContain = React.createClass({
     render:function(){
         var myClass = "maincontain";
@@ -64,10 +58,38 @@ var MainContain = React.createClass({
     }
 });
 
+var ProfileCard = React.createClass({
+    render:function(){
+        var myClass = "card";
+        return <div className={myClass} id="contactInfo">asdf</div>;
+    }
+});
+
+var TitleCard = React.createClass({
+   render:function(){
+       var myClass = "card";
+       return <div className={myClass}>
+           <div className="cardTitle">
+                {this.props.name}
+               </div>
+           <div className="cardBody">
+               card body
+               </div>
+
+           </div>
+   }
+});
+
 var ProfilePage = React.createClass({
    render:function(){
        return <div>
-       <Navbar/><MainContain></MainContain>
+       <Navbar/><MainContain>
+           <ProfileCard/>
+               <TitleCard name="Submitted Applications"/>
+               <TitleCard name="Work Experience"/>
+               <TitleCard name="References"/>
+               <TitleCard name="Availability"/>
+           </MainContain>
            </div>
    }
 });

@@ -209,6 +209,12 @@ input, option, select {
 @media (min-width: 603px) {
   .margin-override {
     margin: 15px; } }
+@media (max-width: 549px) {
+  .subhead {
+    margin-top: 40px; }
+
+  .subhead.weekdays {
+    margin-top: 0; } }
 @media (max-width: 602px) {
   .maincontain {
     padding: 75px 5px 30px 5px; }
@@ -222,13 +228,7 @@ input, option, select {
     max-width: 602px; }
 
   .refRelation {
-    width: 25%; }
-
-  .subhead {
-    margin-top: 40px; }
-
-  .subhead.weekdays {
-    margin-top: 0; } }
+    width: 25%; } }
 @media (max-width: 608px) {
   .maincontain #contactInfo .profilePicture {
     display: block;

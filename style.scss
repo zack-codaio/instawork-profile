@@ -303,6 +303,15 @@ input, option, select {
 
 }
 
+@media(max-width:549px){
+  .subhead{
+    margin-top:40px;
+  }
+  .subhead.weekdays{
+    margin-top:0;
+  }
+}
+
 @media(max-width: 602px){
   //need updated styling for all other cards
   .maincontain{
@@ -322,12 +331,6 @@ input, option, select {
   }
   .refRelation{
     width:25%;
-  }
-  .subhead{
-    margin-top:40px;
-  }
-  .subhead.weekdays{
-    margin-top:0;
   }
 }
 

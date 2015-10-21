@@ -19,8 +19,8 @@ var Navbar = React.createClass({
         return <div id="navbar">
             <HeaderLogo/>
             <Searchbar/>
-            <NavButton name="Jobs" />
-            <NavButton name="Profile" />
+            <NavButton name="Jobs"/>
+            <NavButton name="Profile"/>
         </div>;
     }
 });
@@ -71,6 +71,7 @@ var ProfileCard = React.createClass({
 
                 <div className="profileInformation">
                     <h1>Zachary Aman</h1>
+
                     <div className="label">
                         Commuting from:
                     </div>
@@ -92,16 +93,40 @@ var ProfileCard = React.createClass({
     }
 });
 
+
+//on resize or init
+//get the height of the cards
+//give one that isn't the profile card that's closest to the top a margin of -15px
 var TitleCard = React.createClass({
+    getInitialState: function () {
+        return {
+            myStyle: {}
+        }
+    },
+    handleResize: function () {
+        var pos = this.getDOMNode().getBoundingClientRect();
+        if (pos.top == 105) {
+            //set style to margin = -15px
+            this.setState({
+                myStyle: {
+                    "margin-top": "0"
+                }
+            })
+        }
+    },
+    componentDidMount: function () {
+        window.addEventListener("resize", this.handleResize);
+        this.handleResize();
+    },
     render: function () {
         var myClass = "card";
-        return <div className="twelve columns margin-override">
+        return <div className="twelve columns margin-override" style={this.state.myStyle}>
             <div className={myClass}>
                 <div className="cardTitle">
                     <h2>{this.props.name}</h2>
                 </div>
                 <div className="cardBody">
-                {this.props.children}
+                    {this.props.children}
                 </div>
             </div>
         </div>
@@ -134,24 +159,10 @@ var ActionRequired = React.createClass({
                 <img src="img/alert2.svg"/>
                 ACTION REQUIRED
             </div>
-        {this.props.children}
+            {this.props.children}
         </div>
     }
 });
-
-
-//<div class="six columns">
-//    <label for="exampleEmailInput">Your email</label>
-//    <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
-//    </div>
-//    <div class="six columns">
-//        <label for="exampleRecipientInput">Reason for contacting</label>
-//        <select class="u-full-width" id="exampleRecipientInput">
-//            <option value="Option 1">Questions</option>
-//            <option value="Option 2">Admiration</option>
-//            <option value="Option 3">Can I get your number?</option>
-//        </select>
-//    </div>
 
 var ResumeForm = React.createClass({
     render: function () {
@@ -182,6 +193,7 @@ var ResumeForm = React.createClass({
                 <option value="Option 3">5 Years</option>
 
             </select>
+
             <div className="dg_button">
                 Add Experience
             </div>
@@ -217,27 +229,36 @@ var ReferencesForm = React.createClass({
             <input className="u-full-width" type="email" placeholder="Mobile phone number" id="refPhone"/>
 
             <label >What's their relationship with you?</label>
+
             <div className="row">
-                <div className="six columns refRelation" >
-                    <img src={refType == 1 ? "img/manager-on.png" : "img/manager-off.png"} onClick={refForm.handleClick.bind(null, 1)}/>
+                <div className="six columns refRelation">
+                    <img src={refType == 1 ? "img/manager-on.png" : "img/manager-off.png"}
+                         onClick={refForm.handleClick.bind(null, 1)}/>
+
                     <div className="iconLabel">
                         Manager
                     </div>
                 </div>
                 <div className="six columns refRelation">
-                    <img src={refType == 2 ? "img/owner-on.png" : "img/owner-off.png"} onClick={refForm.handleClick.bind(null, 2)}/>
+                    <img src={refType == 2 ? "img/owner-on.png" : "img/owner-off.png"}
+                         onClick={refForm.handleClick.bind(null, 2)}/>
+
                     <div className="iconLabel">
                         Owner
                     </div>
                 </div>
                 <div className="six columns refRelation">
-                    <img src={refType == 3 ? "img/coworker-on.png" : "img/coworker-off.png"} onClick={refForm.handleClick.bind(null, 3)}/>
+                    <img src={refType == 3 ? "img/coworker-on.png" : "img/coworker-off.png"}
+                         onClick={refForm.handleClick.bind(null, 3)}/>
+
                     <div className="iconLabel">
                         Co-worker
                     </div>
                 </div>
                 <div className="six columns refRelation">
-                    <img src={refType == 4 ? "img/friend-on.png" : "img/friend-off.png"} onClick={refForm.handleClick.bind(null, 4)}/>
+                    <img src={refType == 4 ? "img/friend-on.png" : "img/friend-off.png"}
+                         onClick={refForm.handleClick.bind(null, 4)}/>
+
                     <div className="iconLabel">
                         Friend
                     </div>
@@ -256,21 +277,27 @@ var AvailabilityToggles = React.createClass({
     render: function () {
         return <div className="row">
             <div className="six columns">
-                <h3 className="subhead">
+                <h3 className="subhead weekdays">
                     Weekdays
                 </h3>
-                <AvailabilityRow availableImg="img/morning-on.png" notAvailableImg="img/morning-off.png" availableText="weekday mornings."/>
-                <AvailabilityRow availableImg="img/afternoon-on.png" notAvailableImg="img/afternoon-off.png" availableText="weekday afternoons."/>
-                <AvailabilityRow availableImg="img/evening-on.png" notAvailableImg="img/evening-off.png" availableText="weekday evenings."/>
+                <AvailabilityRow availableImg="img/morning-on.png" notAvailableImg="img/morning-off.png"
+                                 availableText="weekday mornings."/>
+                <AvailabilityRow availableImg="img/afternoon-on.png" notAvailableImg="img/afternoon-off.png"
+                                 availableText="weekday afternoons."/>
+                <AvailabilityRow availableImg="img/evening-on.png" notAvailableImg="img/evening-off.png"
+                                 availableText="weekday evenings."/>
             </div>
 
             <div className="six columns">
                 <h3 className="subhead">
                     Weekends
-                    </h3>
-                <AvailabilityRow availableImg="img/morning-on.png" notAvailableImg="img/morning-off.png" availableText="weekend mornings."/>
-                <AvailabilityRow availableImg="img/afternoon-on.png" notAvailableImg="img/afternoon-off.png" availableText="weekend afternoons."/>
-                <AvailabilityRow availableImg="img/evening-on.png" notAvailableImg="img/evening-off.png" availableText="weekend evenings."/>
+                </h3>
+                <AvailabilityRow availableImg="img/morning-on.png" notAvailableImg="img/morning-off.png"
+                                 availableText="weekend mornings."/>
+                <AvailabilityRow availableImg="img/afternoon-on.png" notAvailableImg="img/afternoon-off.png"
+                                 availableText="weekend afternoons."/>
+                <AvailabilityRow availableImg="img/evening-on.png" notAvailableImg="img/evening-off.png"
+                                 availableText="weekend evenings."/>
             </div>
         </div>
     }
@@ -290,14 +317,15 @@ var AvailabilityRow = React.createClass({
     },
     render: function () {
         var availabilityClass = "";
-        if(!this.state.available){
+        if (!this.state.available) {
             availabilityClass += "off";
         }
 
         return <div className="availabilityWrapper" onClick={this.handleClick}>
-        <img src={this.state.available ? this.props.availableImg : this.props.notAvailableImg}/>
+            <img src={this.state.available ? this.props.availableImg : this.props.notAvailableImg}/>
+
             <div className={availabilityClass}>
-                   {this.state.available ? "I am available on "+this.props.availableText : "I am not available on "+this.props.availableText}
+                {this.state.available ? "I am available on " + this.props.availableText : "I am not available on " + this.props.availableText}
             </div>
         </div>
     }
@@ -311,7 +339,8 @@ var ProfilePage = React.createClass({
 
                 <ProfileCard/>
                 <TitleCard name="Submitted Applications">
-                    <ApplicationRow jobtitle="Part-Time Host" company="The Battery" distance="0.3 Miles" status="Pending"/>
+                    <ApplicationRow jobtitle="Part-Time Host" company="The Battery" distance="0.3 Miles"
+                                    status="Pending"/>
                     <ApplicationRow jobtitle="Waiter" company="Mousad" distance="1.6 Miles" status="Pending"/>
                     <ApplicationRow jobtitle="Host" company="5A5" distance="1.7 Miles" status="Declined"/>
                     <ApplicationRow jobtitle="Host" company="Chiaroscuro" distance="2.4 Miles" status="Scheduled"/>
@@ -342,7 +371,7 @@ var ProfilePage = React.createClass({
                 </TitleCard>
                 <TitleCard name="Availability">
                     <AvailabilityToggles/>
-                    </TitleCard>
+                </TitleCard>
             </MainContain>
         </div>
     }

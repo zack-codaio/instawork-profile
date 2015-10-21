@@ -138,14 +138,37 @@ var ProfileCard = React.createClass({
     }
 });
 
+//on resize or init
+//get the height of the cards
+//give one that isn't the profile card that's closest to the top a margin of -15px
 var TitleCard = React.createClass({
     displayName: 'TitleCard',
 
+    getInitialState: function getInitialState() {
+        return {
+            myStyle: {}
+        };
+    },
+    handleResize: function handleResize() {
+        var pos = this.getDOMNode().getBoundingClientRect();
+        if (pos.top == 105) {
+            //set style to margin = -15px
+            this.setState({
+                myStyle: {
+                    "margin-top": "0"
+                }
+            });
+        }
+    },
+    componentDidMount: function componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
+        this.handleResize();
+    },
     render: function render() {
         var myClass = "card";
         return React.createElement(
             'div',
-            { className: 'twelve columns margin-override' },
+            { className: 'twelve columns margin-override', style: this.state.myStyle },
             React.createElement(
                 'div',
                 { className: myClass },
@@ -216,19 +239,6 @@ var ActionRequired = React.createClass({
         );
     }
 });
-
-//<div class="six columns">
-//    <label for="exampleEmailInput">Your email</label>
-//    <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
-//    </div>
-//    <div class="six columns">
-//        <label for="exampleRecipientInput">Reason for contacting</label>
-//        <select class="u-full-width" id="exampleRecipientInput">
-//            <option value="Option 1">Questions</option>
-//            <option value="Option 2">Admiration</option>
-//            <option value="Option 3">Can I get your number?</option>
-//        </select>
-//    </div>
 
 var ResumeForm = React.createClass({
     displayName: 'ResumeForm',
@@ -357,7 +367,8 @@ var ReferencesForm = React.createClass({
                 React.createElement(
                     'div',
                     { className: 'six columns refRelation' },
-                    React.createElement('img', { src: refType == 1 ? "img/manager-on.png" : "img/manager-off.png", onClick: refForm.handleClick.bind(null, 1) }),
+                    React.createElement('img', { src: refType == 1 ? "img/manager-on.png" : "img/manager-off.png",
+                        onClick: refForm.handleClick.bind(null, 1) }),
                     React.createElement(
                         'div',
                         { className: 'iconLabel' },
@@ -367,7 +378,8 @@ var ReferencesForm = React.createClass({
                 React.createElement(
                     'div',
                     { className: 'six columns refRelation' },
-                    React.createElement('img', { src: refType == 2 ? "img/owner-on.png" : "img/owner-off.png", onClick: refForm.handleClick.bind(null, 2) }),
+                    React.createElement('img', { src: refType == 2 ? "img/owner-on.png" : "img/owner-off.png",
+                        onClick: refForm.handleClick.bind(null, 2) }),
                     React.createElement(
                         'div',
                         { className: 'iconLabel' },
@@ -377,7 +389,8 @@ var ReferencesForm = React.createClass({
                 React.createElement(
                     'div',
                     { className: 'six columns refRelation' },
-                    React.createElement('img', { src: refType == 3 ? "img/coworker-on.png" : "img/coworker-off.png", onClick: refForm.handleClick.bind(null, 3) }),
+                    React.createElement('img', { src: refType == 3 ? "img/coworker-on.png" : "img/coworker-off.png",
+                        onClick: refForm.handleClick.bind(null, 3) }),
                     React.createElement(
                         'div',
                         { className: 'iconLabel' },
@@ -387,7 +400,8 @@ var ReferencesForm = React.createClass({
                 React.createElement(
                     'div',
                     { className: 'six columns refRelation' },
-                    React.createElement('img', { src: refType == 4 ? "img/friend-on.png" : "img/friend-off.png", onClick: refForm.handleClick.bind(null, 4) }),
+                    React.createElement('img', { src: refType == 4 ? "img/friend-on.png" : "img/friend-off.png",
+                        onClick: refForm.handleClick.bind(null, 4) }),
                     React.createElement(
                         'div',
                         { className: 'iconLabel' },
@@ -416,12 +430,15 @@ var AvailabilityToggles = React.createClass({
                 { className: 'six columns' },
                 React.createElement(
                     'h3',
-                    { className: 'subhead' },
+                    { className: 'subhead weekdays' },
                     'Weekdays'
                 ),
-                React.createElement(AvailabilityRow, { availableImg: 'img/morning-on.png', notAvailableImg: 'img/morning-off.png', availableText: 'weekday mornings.' }),
-                React.createElement(AvailabilityRow, { availableImg: 'img/afternoon-on.png', notAvailableImg: 'img/afternoon-off.png', availableText: 'weekday afternoons.' }),
-                React.createElement(AvailabilityRow, { availableImg: 'img/evening-on.png', notAvailableImg: 'img/evening-off.png', availableText: 'weekday evenings.' })
+                React.createElement(AvailabilityRow, { availableImg: 'img/morning-on.png', notAvailableImg: 'img/morning-off.png',
+                    availableText: 'weekday mornings.' }),
+                React.createElement(AvailabilityRow, { availableImg: 'img/afternoon-on.png', notAvailableImg: 'img/afternoon-off.png',
+                    availableText: 'weekday afternoons.' }),
+                React.createElement(AvailabilityRow, { availableImg: 'img/evening-on.png', notAvailableImg: 'img/evening-off.png',
+                    availableText: 'weekday evenings.' })
             ),
             React.createElement(
                 'div',
@@ -431,9 +448,12 @@ var AvailabilityToggles = React.createClass({
                     { className: 'subhead' },
                     'Weekends'
                 ),
-                React.createElement(AvailabilityRow, { availableImg: 'img/morning-on.png', notAvailableImg: 'img/morning-off.png', availableText: 'weekend mornings.' }),
-                React.createElement(AvailabilityRow, { availableImg: 'img/afternoon-on.png', notAvailableImg: 'img/afternoon-off.png', availableText: 'weekend afternoons.' }),
-                React.createElement(AvailabilityRow, { availableImg: 'img/evening-on.png', notAvailableImg: 'img/evening-off.png', availableText: 'weekend evenings.' })
+                React.createElement(AvailabilityRow, { availableImg: 'img/morning-on.png', notAvailableImg: 'img/morning-off.png',
+                    availableText: 'weekend mornings.' }),
+                React.createElement(AvailabilityRow, { availableImg: 'img/afternoon-on.png', notAvailableImg: 'img/afternoon-off.png',
+                    availableText: 'weekend afternoons.' }),
+                React.createElement(AvailabilityRow, { availableImg: 'img/evening-on.png', notAvailableImg: 'img/evening-off.png',
+                    availableText: 'weekend evenings.' })
             )
         );
     }
@@ -487,7 +507,8 @@ var ProfilePage = React.createClass({
                 React.createElement(
                     TitleCard,
                     { name: 'Submitted Applications' },
-                    React.createElement(ApplicationRow, { jobtitle: 'Part-Time Host', company: 'The Battery', distance: '0.3 Miles', status: 'Pending' }),
+                    React.createElement(ApplicationRow, { jobtitle: 'Part-Time Host', company: 'The Battery', distance: '0.3 Miles',
+                        status: 'Pending' }),
                     React.createElement(ApplicationRow, { jobtitle: 'Waiter', company: 'Mousad', distance: '1.6 Miles', status: 'Pending' }),
                     React.createElement(ApplicationRow, { jobtitle: 'Host', company: '5A5', distance: '1.7 Miles', status: 'Declined' }),
                     React.createElement(ApplicationRow, { jobtitle: 'Host', company: 'Chiaroscuro', distance: '2.4 Miles', status: 'Scheduled' })

@@ -274,6 +274,7 @@ input, option, select {
 
 .availabilityWrapper {
   margin-bottom:30px;
+  max-width:281px;
   img {
     width:30%;
     vertical-align:middle;
@@ -318,6 +319,15 @@ input, option, select {
   .dg_button{
     width:100%;
     max-width:602px;
+  }
+  .refRelation{
+    width:25%;
+  }
+  .subhead{
+    margin-top:40px;
+  }
+  .subhead.weekdays{
+    margin-top:0;
   }
 }
 

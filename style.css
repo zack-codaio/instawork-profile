@@ -188,7 +188,8 @@ input, option, select {
   margin-bottom: 10px; }
 
 .availabilityWrapper {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  max-width: 281px; }
   .availabilityWrapper img {
     width: 30%;
     vertical-align: middle; }
@@ -218,7 +219,16 @@ input, option, select {
 
   .dg_button {
     width: 100%;
-    max-width: 602px; } }
+    max-width: 602px; }
+
+  .refRelation {
+    width: 25%; }
+
+  .subhead {
+    margin-top: 40px; }
+
+  .subhead.weekdays {
+    margin-top: 0; } }
 @media (max-width: 608px) {
   .maincontain #contactInfo .profilePicture {
     display: block;

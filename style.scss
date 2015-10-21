@@ -15,6 +15,7 @@ body {
   margin: 0;
   font-family: "museo-sans", sans-serif;
   color: $dgray;
+  background: $lightgray;
 }
 
 img {
@@ -27,7 +28,7 @@ img {
 #navbar {
   height: 60px;
   z-index: 99;
-  position: relative;
+  position: fixed;
   background: white;
   //  position:fixed;
   //  left:0;
@@ -67,13 +68,10 @@ img {
 .maincontain {
   //  text-align:center;
   z-index: 1;
-  padding: 15px 30px 30px;
+  padding: 75px 30px 30px;
   background: $lightgray;
 
-  //  -moz-column-count: 2;
-  //  -moz-column-gap: 30px;
-  //  -webkit-column-count: 2;
-  //  -webkit-column-gap: 30px;
+  max-width:767px;
 
   //contactInfo is a special card because it doesn't have that same title / body structure, there's just one card
   #contactInfo {
@@ -111,7 +109,9 @@ img {
     background: white;
     display: inline-block;
     border-radius: 3px;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
+    //box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
+    border:1px solid $medgray;
+
     //    min-width:520px;
     width: 100%;
     font-weight: 100;
@@ -295,9 +295,64 @@ input, option, select {
   margin-bottom:0;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 603px) {
   .margin-override {
     margin: 15px;
   }
+
 }
 
+@media(max-width: 602px){
+  //need updated styling for all other cards
+  .maincontain{
+    padding:75px 5px 30px 5px;
+    .card{
+      margin-bottom:5px;
+      .cardBody{
+        .six.columns{
+          margin-left:0;
+        }
+      }
+    }
+  }
+  .dg_button{
+    width:100%;
+    max-width:602px;
+  }
+}
+
+@media(max-width:608px){
+  //profile card splits off a single row here, needs updated styling
+  .maincontain {
+    #contactInfo {
+      //text-align:center;
+      .profilePicture {
+        display: block;
+        margin-bottom:15px;
+      }
+      .profileInformation{
+        text-align:left;
+        margin-left:0;
+        width:100%;
+      }
+    }
+  }
+
+}
+
+@media(max-width:750px){
+  //change styling of navbar
+}
+
+//full screen desktop, display as masonry blocks with columns
+@media(min-width:1160px){
+  .maincontain{
+    max-width:9000px;
+    -moz-column-count: 2;
+    -moz-column-gap: 30px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 30px;
+    column-count:2;
+    column-gap:30px;
+  }
+}

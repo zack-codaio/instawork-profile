@@ -93,7 +93,7 @@ var ProfileCard = React.createClass({
         var myClass = "card";
         return React.createElement(
             'div',
-            { className: 'six columns margin-override' },
+            { className: 'twelve columns margin-override' },
             React.createElement(
                 'div',
                 { className: myClass, id: 'contactInfo' },
@@ -145,7 +145,7 @@ var TitleCard = React.createClass({
         var myClass = "card";
         return React.createElement(
             'div',
-            { className: 'six columns margin-override' },
+            { className: 'twelve columns margin-override' },
             React.createElement(
                 'div',
                 { className: myClass },

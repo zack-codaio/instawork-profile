@@ -5,7 +5,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: "museo-sans", sans-serif;
-  color: #444; }
+  color: #444;
+  background: #eee; }
 
 img {
   max-width: 100%;
@@ -15,7 +16,7 @@ img {
 #navbar {
   height: 60px;
   z-index: 99;
-  position: relative;
+  position: fixed;
   background: white;
   border-bottom: 1px solid #166373;
   box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -39,8 +40,9 @@ img {
 
 .maincontain {
   z-index: 1;
-  padding: 15px 30px 30px;
-  background: #eee; }
+  padding: 75px 30px 30px;
+  background: #eee;
+  max-width: 767px; }
   .maincontain #contactInfo {
     padding: 30px; }
     .maincontain #contactInfo .profilePicture {
@@ -66,7 +68,7 @@ img {
     background: white;
     display: inline-block;
     border-radius: 3px;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    border: 1px solid #9B9B9B;
     width: 100%;
     font-weight: 100; }
     .maincontain .card .cardTitle {
@@ -203,8 +205,36 @@ input, option, select {
 .availabilityWrapper:last-of-type {
   margin-bottom: 0; }
 
-@media (min-width: 550px) {
+@media (min-width: 603px) {
   .margin-override {
     margin: 15px; } }
+@media (max-width: 602px) {
+  .maincontain {
+    padding: 75px 5px 30px 5px; }
+    .maincontain .card {
+      margin-bottom: 5px; }
+      .maincontain .card .cardBody .six.columns {
+        margin-left: 0; }
+
+  .dg_button {
+    width: 100%;
+    max-width: 602px; } }
+@media (max-width: 608px) {
+  .maincontain #contactInfo .profilePicture {
+    display: block;
+    margin-bottom: 15px; }
+  .maincontain #contactInfo .profileInformation {
+    text-align: left;
+    margin-left: 0;
+    width: 100%; } }
+@media (min-width: 1160px) {
+  .maincontain {
+    max-width: 9000px;
+    -moz-column-count: 2;
+    -moz-column-gap: 30px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 30px;
+    column-count: 2;
+    column-gap: 30px; } }
 
 /*# sourceMappingURL=style.css.map */
